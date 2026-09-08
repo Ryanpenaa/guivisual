@@ -160,45 +160,8 @@ function Index() {
                 organizada.
               </p>
             </div>
-            <div className="content-grid">
-              {[
-                {
-                  icon: Layers,
-                  name: "Características dos Orixás",
-                  text: "Conheça os principais aspectos, arquétipos e ensinamentos associados a cada Orixá.",
-                  tag: "COMPREENDER",
-                },
-                {
-                  icon: Palette,
-                  name: "Cores, símbolos e elementos",
-                  text: "Entenda as principais associações culturais e simbólicas de cada Orixá.",
-                  tag: "RECONHECER",
-                },
-                {
-                  icon: BookOpen,
-                  name: "Histórias e ensinamentos",
-                  text: "Conheça narrativas tradicionais e os valores transmitidos por cada Orixá.",
-                  tag: "APRENDER",
-                },
-                {
-                  icon: MessageCircle,
-                  name: "Saudações e representações",
-                  text: "Aprenda o significado de termos, símbolos e referências frequentemente encontrados nos estudos.",
-                  tag: "DESCOBRIR",
-                },
-              ].map(({ icon: Icon, name, text, tag }, i) => (
-                <article className="content-card" key={name}>
-                  <div className="card-top">
-                    <Icon size={32} strokeWidth={1.2} />
-                    <span>0{i + 1}</span>
-                  </div>
-                  <p className="mini-label">{tag}</p>
-                  <h3>{name}</h3>
-                  <p>{text}</p>
-                </article>
-              ))}
-            </div>
           </div>
+          <FlashcardCarousel />
         </section>
         <section className="section container method">
           <div className="method-intro">
