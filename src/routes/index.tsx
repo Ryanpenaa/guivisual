@@ -66,9 +66,21 @@ function Index() {
             </p>
             <h1 id="hero-title">
               Entenda o significado dos <em>Orixás.</em>
-              <br />
-              <span>De forma simples, visual e organizada.</span>
             </h1>
+            <figure className="hero-visual">
+              <div className="mockup-panel">
+                <img
+                  src="/guia-mockup.png"
+                  width="1254"
+                  height="1254"
+                  alt="Guia Significado dos Orixás apresentado em livro, celular e tablet, com mapas visuais de Oxalá, Iemanjá, Ogum e Xangô"
+                  fetchPriority="high"
+                />
+              </div>
+              <figcaption>
+                Material 100% digital · imagens ilustrativas · sem envio físico
+              </figcaption>
+            </figure>
             <p className="hero-description">
               Conheça histórias, características, símbolos, cores e ensinamentos dos principais
               Orixás — sem se perder em informações complicadas.
@@ -88,18 +100,6 @@ function Index() {
               </span>
             </div>
           </div>
-          <figure className="hero-visual">
-            <div className="mockup-panel">
-              <img
-                src="/guia-mockup.png"
-                width="1254"
-                height="1254"
-                alt="Guia Significado dos Orixás apresentado em livro, celular e tablet, com mapas visuais de Oxalá, Iemanjá, Ogum e Xangô"
-                fetchPriority="high"
-              />
-            </div>
-            <figcaption>Material 100% digital · imagens ilustrativas · sem envio físico</figcaption>
-          </figure>
         </section>
         <div className="values-strip">
           <div className="container">

@@ -283,11 +283,25 @@ button:focus-visible {
   background: #e8eee6;
 }
 .hero {
-  display: grid;
-  grid-template-columns: 1.14fr 1fr;
-  gap: 70px;
-  align-items: center;
+  display: block;
+  text-align: center;
   padding-block: 65px 76px;
+}
+.hero .hero-copy {
+  max-width: 760px;
+  margin-inline: auto;
+}
+.hero .eyebrow,
+.hero .trust {
+  justify-content: center;
+}
+.hero .hero-description {
+  margin-inline: auto;
+}
+.hero .hero-visual {
+  width: min(100%, 540px);
+  margin: 30px auto 0;
+  padding: 0;
 }
 .eyebrow {
   font-size: 12px;
