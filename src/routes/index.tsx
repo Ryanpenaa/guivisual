@@ -23,6 +23,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import { FlashcardCarousel } from "@/components/flashcard-carousel";
 export const Route = createFileRoute("/")({ component: Index });
 function Brand() {
   return (
