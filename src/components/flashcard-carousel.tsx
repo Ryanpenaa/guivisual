@@ -46,6 +46,7 @@ export function FlashcardCarousel() {
       }, SLIDE_MS);
       return () => clearTimeout(t);
     }
+    return undefined;
   }, [index]);
 
   useEffect(() => {
@@ -53,6 +54,7 @@ export function FlashcardCarousel() {
       const raf = requestAnimationFrame(() => requestAnimationFrame(() => setAnimate(true)));
       return () => cancelAnimationFrame(raf);
     }
+    return undefined;
   }, [animate]);
 
   return (
