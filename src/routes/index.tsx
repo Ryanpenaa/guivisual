@@ -12,7 +12,6 @@ import {
   Gift,
   Infinity as InfinityIcon,
   Printer,
-  LockKeyhole,
 } from "lucide-react";
 import {
   Accordion,
@@ -21,6 +20,7 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 import { FlashcardCarousel } from "@/components/flashcard-carousel";
+import { PlansOffer, PLAN_BONUSES } from "@/components/plans-offer";
 export const Route = createFileRoute("/")({ component: Index });
 function Brand() {
   return (
@@ -183,7 +183,8 @@ function Index() {
                   "Significados e características",
                   "Cores, símbolos e elementos",
                   "Histórias e ensinamentos",
-                  "Glossário de termos",
+                  "Glossário Visual dos Orixás",
+                  "Mapa de Estudos dos Orixás",
                   "Conteúdo para leitura no celular",
                   "Arquivos prontos para impressão",
                   "Acesso vitalício ao material",
@@ -237,7 +238,7 @@ function Index() {
             <div>
               <p className="eyebrow">PARA IR UM POUCO ALÉM</p>
               <h2>
-                Um guia. <em>Cinco bônus.</em>
+                Plano Completo. <em>Três bônus.</em>
                 <br />
                 Mais caminhos para aprender.
               </h2>
@@ -245,34 +246,13 @@ function Index() {
             <div className="bonus-value">
               <Gift size={22} />
               <span>
-                Valor dos bônus<strong>R$ 97,00</strong>
-                <small>Incluídos na sua compra</small>
+                Três materiais educativos<strong>Plano Completo</strong>
+                <small>Incluídos no plano de R$ 19,90</small>
               </span>
             </div>
           </div>
           <div className="bonus-list">
-            {[
-              [
-                "Glossário Visual dos Orixás",
-                "Termos importantes explicados de maneira simples para facilitar seus primeiros estudos.",
-              ],
-              [
-                "Tabela de Cores, Símbolos e Elementos",
-                "Uma tabela rápida para consultar as principais associações de cada Orixá.",
-              ],
-              [
-                "Checklist “Por Onde Começar”",
-                "Um roteiro simples para organizar seus primeiros passos no estudo.",
-              ],
-              [
-                "Guia de Diferenças entre Umbanda e Candomblé",
-                "Uma introdução às diferenças entre as tradições, sem tratar suas práticas como se fossem iguais.",
-              ],
-              [
-                "Mapa de Estudos dos Orixás",
-                "Uma sequência recomendada para você estudar os conteúdos com mais clareza.",
-              ],
-            ].map(([title, text], i) => (
+            {PLAN_BONUSES.map(([title, text], i) => (
               <article key={title}>
                 <span className="bonus-number">0{i + 1}</span>
                 <div>
@@ -280,71 +260,13 @@ function Index() {
                   <p>{text}</p>
                 </div>
                 <span className="included">
-                  INCLUÍDO <Check size={14} />
+                  NO COMPLETO <Check size={14} />
                 </span>
               </article>
             ))}
           </div>
         </section>
-        <section id="oferta" className="section offer-section">
-          <div className="container offer-grid">
-            <div className="offer-copy">
-              <p className="eyebrow">SEU PRIMEIRO PASSO COMEÇA AQUI</p>
-              <h2>
-                Você não precisa
-                <br />
-                saber tudo <em>agora.</em>
-              </h2>
-              <p>
-                Comece entendendo os fundamentos, conhecendo os principais Orixás e construindo uma
-                base de estudos organizada.
-              </p>
-              <p className="offer-signature">
-                Conheça os Orixás
-                <br />
-                com mais clareza.
-              </p>
-            </div>
-            <div className="offer-card">
-              <span className="offer-label">GUIA COMPLETO + 5 BÔNUS</span>
-              <h3>Guia Visual dos Orixás</h3>
-              <p>Para iniciantes</p>
-              <div className="price">
-                <span>
-                  De <s>R$ 47,00</s>
-                </span>
-                <span className="price-today">Hoje por apenas</span>
-                <strong>
-                  <small>R$</small> 9<span>,90</span>
-                </strong>
-              </div>
-              <ul className="offer-checks">
-                <li>
-                  <Check /> Material digital completo
-                </li>
-                <li>
-                  <Check /> Todos os 5 bônus incluídos
-                </li>
-                <li>
-                  <Check /> Acesso vitalício
-                </li>
-              </ul>
-              <button className="cta offer-button" disabled>
-                Compra disponível em breve <ArrowRight size={19} />
-              </button>
-              <p className="checkout-note">Estamos preparando o acesso para você.</p>
-              <div className="offer-trust">
-                <span>
-                  <LockKeyhole /> Pagamento seguro
-                </span>
-                <span>
-                  <ShieldCheck /> Garantia de 7 dias
-                </span>
-              </div>
-              <p className="delivery-note">Acesso imediato após a confirmação do pagamento.</p>
-            </div>
-          </div>
-        </section>
+        <PlansOffer />
         <section className="container guarantee">
           <div className="guarantee-icon">
             <ShieldCheck size={50} strokeWidth={1.2} />
