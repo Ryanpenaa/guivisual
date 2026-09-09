@@ -1,7 +1,12 @@
 import { useEffect, useState, useCallback } from "react";
 import { CheckCircle2 } from "lucide-react";
 
-const NOTIFICATIONS = [
+type Notification = {
+  name: string;
+  plan: string;
+};
+
+const NOTIFICATIONS: Notification[] = [
   { name: "Ana Paula", plan: "Plano Completo" },
   { name: "Marcos S.", plan: "Plano Básico" },
   { name: "Juliana R.", plan: "Plano Completo" },
@@ -31,7 +36,7 @@ export function SocialProofToast() {
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [current, setCurrent] = useState(NOTIFICATIONS[0]);
+  const [current, setCurrent] = useState<Notification>(NOTIFICATIONS[0]);
 
   const showNext = useCallback(() => {
     setIndex((prev) => {
