@@ -1346,6 +1346,50 @@ h2 {
 }
 
 /* Flashcard carousel */
+/* Center the page copy while retaining the current sections and carousel. */
+main {
+  text-align: center;
+}
+main .eyebrow {
+  justify-content: center;
+}
+main .section-heading {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+main .section-heading > p {
+  max-width: 680px;
+}
+main .check-list li,
+main .for-you li,
+main .format-tags {
+  justify-content: center;
+}
+main .offer-copy > p {
+  margin-inline: auto;
+}
+main .bonus-list article > div {
+  flex: 1;
+}
+main .bonus-value {
+  text-align: center;
+}
+main .faq-question {
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding-inline: 28px;
+}
+main .faq-question > svg {
+  position: absolute;
+  right: 0;
+}
+main .faq-answer {
+  text-align: center;
+  padding-inline: 20px;
+}
+
 .fc-carousel {
   --fc-gap: 20px;
   width: min(100%, 1000px);
