@@ -41,12 +41,13 @@ export function SocialProofToast() {
   const showNext = useCallback(() => {
     setIndex((prev) => {
       const next = (prev + 1) % NOTIFICATIONS.length;
-      setCurrent(NOTIFICATIONS[next]!);
+      setCurrent(NOTIFICATIONS[next] ?? NOTIFICATIONS[0]);
       return next;
     });
     setVisible(true);
     window.setTimeout(() => setVisible(false), VISIBLE_MS);
   }, []);
+
 
   useEffect(() => {
     setMounted(true);
