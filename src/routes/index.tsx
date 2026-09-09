@@ -230,16 +230,7 @@ function Index() {
                 no Plano Completo.
               </h2>
             </div>
-            <div className="bonus-value">
-              <Gift size={22} />
-              <span>
-                <span>
-                  Total dos bônus: <s>R$ 51,40</s>
-                </span>
-                <strong>Hoje grátis</strong>
-                <small>Na compra do Plano Completo</small>
-              </span>
-            </div>
+
           </div>
           <div className="bonus-list">
             {PLAN_BONUSES.map(([title, text], i) => (
@@ -258,6 +249,16 @@ function Index() {
               </article>
             ))}
           </div>
+            <div className="bonus-value bonus-total">
+              <Gift size={22} />
+              <span>
+                <span>
+                  Total dos bônus: <s>R$ 51,40</s>
+                </span>
+                <strong>Hoje grátis</strong>
+                <small>Na compra do Plano Completo</small>
+              </span>
+            </div>
         </section>
         <PlansOffer />
         <section className="container guarantee">

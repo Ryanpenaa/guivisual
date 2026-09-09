@@ -1760,3 +1760,45 @@ main .faq-answer {
     transition: opacity 0.01ms;
   }
 }
+
+#bonus .bonus-total {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 36px auto 0;
+  padding: 28px 24px;
+  width: 100%;
+  max-width: 680px;
+  border: 2px solid #c7a65b;
+  border-radius: 14px;
+  background: #153f32;
+  color: #fff8e7;
+  text-align: center;
+  box-shadow: 0 8px 24px rgb(21 63 50 / 12%);
+}
+#bonus .bonus-total svg {
+  color: #efd48e;
+  flex-shrink: 0;
+}
+#bonus .bonus-total strong {
+  color: #efd48e;
+  font-size: clamp(30px, 6vw, 42px);
+  line-height: 1.2;
+  margin: 8px 0;
+}
+#bonus .bonus-total small {
+  color: #fff8e7;
+  font-size: 14px;
+}
+#bonus .bonus-total s {
+  color: #e7d7b6;
+  text-decoration-thickness: 2px;
+}
+@media (max-width: 550px) {
+  #bonus .bonus-total {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 24px 16px;
+  }
+}
