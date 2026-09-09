@@ -36,7 +36,8 @@ export function SocialProofToast() {
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [current, setCurrent] = useState<Notification>(NOTIFICATIONS[0]);
+  const [current, setCurrent] = useState<Notification>(NOTIFICATIONS[0]!);
+
 
   const showNext = useCallback(() => {
     setIndex((prev) => {
