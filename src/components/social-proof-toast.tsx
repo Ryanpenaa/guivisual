@@ -41,7 +41,7 @@ export function SocialProofToast() {
   const showNext = useCallback(() => {
     setIndex((prev) => {
       const next = (prev + 1) % NOTIFICATIONS.length;
-      setCurrent(NOTIFICATIONS[next]);
+      setCurrent(NOTIFICATIONS[next]!);
       return next;
     });
     setVisible(true);
