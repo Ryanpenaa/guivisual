@@ -161,49 +161,11 @@ function Index() {
           </div>
           <FlashcardCarousel />
         </section>
-        <section className="section container method">
-          <div className="method-intro">
-            <p className="eyebrow">O MÉTODO</p>
-            <h2>
-              Conhecer para
-              <br />
-              <em>compreender.</em>
-            </h2>
-            <p>
-              Um material de apoio criado para transformar informações complexas em conteúdos
-              simples, organizados e fáceis de revisar.
-            </p>
-            <p>
-              Em vez de informações soltas, cada Orixá é apresentado dentro de uma estrutura clara.
-            </p>
-            <a className="text-link" href="#recebe">
-              Veja o que está incluído <ArrowDown size={17} />
-            </a>
-          </div>
-          <div className="method-list">
-            {[
-              "Quem é",
-              "O que representa",
-              "Quais são seus símbolos",
-              "Quais elementos estão relacionados",
-              "Quais ensinamentos transmite",
-              "Como aparece nas diferentes tradições",
-            ].map((x, i) => (
-              <div key={x}>
-                <span>0{i + 1}</span>
-                <h3>{x}</h3>
-                <ArrowRight size={18} />
-              </div>
-            ))}
-          </div>
-          <aside className="respect">
-            <Leaf size={24} />
-            <p>
-              <strong>Conhecimento com respeito.</strong> O material é introdutório e reconhece as
-              diferenças entre casas, linhas e tradições religiosas. Umbanda e Candomblé possuem
-              fundamentos próprios.
-            </p>
-          </aside>
+        <section className="section container method-summary" aria-label="Sobre o material">
+          <p>
+            Um material de apoio criado para transformar informações complexas em conteúdos simples,
+            organizados e fáceis de revisar.
+          </p>
         </section>
         <section id="recebe" className="section receive-section">
           <div className="container receive-grid">

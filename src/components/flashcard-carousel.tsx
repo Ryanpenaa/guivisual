@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import oxumare from "@/assets/1fa5f682-a6fd-41e6-81d6-e0a18dae1f8a.webp.asset.json";
 import ogum from "@/assets/3c5fdbd2-7f5b-4770-9344-f4ccfff4a8c2.webp.asset.json";
 import iemanja from "@/assets/7d0fb290-4500-40c5-9237-0f350c8c3179.webp.asset.json";
@@ -17,69 +17,89 @@ const CARDS = [
   { src: exu.url, alt: "Flashcard de Exu — caminhos, comunicação e movimento" },
 ];
 
-// Three copies so the track can slide forward forever and wrap seamlessly.
-const SLIDES = [...CARDS, ...CARDS, ...CARDS];
-const N = CARDS.length;
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+
 const DWELL_MS = 2800;
-const SLIDE_MS = 600;
 
 export function FlashcardCarousel() {
-  const [index, setIndex] = useState(N);
-  const [animate, setAnimate] = useState(true);
-  const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [api, setApi] = useState<CarouselApi>();
+  const [paused, setPaused] = useState(false);
+  const [focused, setFocused] = useState(false);
 
   useEffect(() => {
-    timer.current = setInterval(() => {
-      setIndex((i) => i + 1);
-    }, DWELL_MS);
-    return () => {
-      if (timer.current) clearInterval(timer.current);
+    if (!api) return;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const clear = () => {
+      if (timer) clearTimeout(timer);
     };
-  }, []);
-
-  useEffect(() => {
-    // Reached the end of the middle copy: jump back silently (no visible rewind).
-    if (index >= 2 * N) {
-      const t = setTimeout(() => {
-        setAnimate(false);
-        setIndex((i) => i - N);
-      }, SLIDE_MS);
-      return () => clearTimeout(t);
-    }
-    return undefined;
-  }, [index]);
-
-  useEffect(() => {
-    if (!animate) {
-      const raf = requestAnimationFrame(() => requestAnimationFrame(() => setAnimate(true)));
-      return () => cancelAnimationFrame(raf);
-    }
-    return undefined;
-  }, [animate]);
+    const schedule = () => {
+      clear();
+      if (paused || focused || document.hidden || reducedMotion.matches) return;
+      timer = setTimeout(() => api.scrollNext(), DWELL_MS);
+    };
+    // Start a full dwell only after a slide has settled in the center.
+    api.on("settle", schedule);
+    api.on("select", clear);
+    api.on("pointerDown", clear);
+    api.on("pointerUp", schedule);
+    api.on("reInit", schedule);
+    document.addEventListener("visibilitychange", schedule);
+    reducedMotion.addEventListener("change", schedule);
+    schedule();
+    return () => {
+      clear();
+      api.off("settle", schedule);
+      api.off("select", clear);
+      api.off("pointerDown", clear);
+      api.off("pointerUp", schedule);
+      api.off("reInit", schedule);
+      document.removeEventListener("visibilitychange", schedule);
+      reducedMotion.removeEventListener("change", schedule);
+    };
+  }, [api, paused, focused]);
 
   return (
-    <div
+    <Carousel
       className="fc-carousel"
-      role="region"
-      aria-label="Flashcards dos Orixás em carrossel automático"
+      opts={{ loop: true, align: "center", duration: 30 }}
+      setApi={setApi}
+      aria-label="Cards dos Orixás"
+      onFocusCapture={() => setFocused(true)}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false);
+      }}
     >
-      <div
-        className="fc-track"
-        style={{
-          transform: `translateX(calc(50% - (var(--fc-w) / 2) - (var(--fc-w) * ${index})))`,
-          transition: animate ? `transform ${SLIDE_MS}ms cubic-bezier(0.4, 0, 0.2, 1)` : "none",
-        }}
-      >
-        {SLIDES.map((card, i) => (
-          <figure
-            key={i}
-            className={`fc-card${i === index ? " is-active" : ""}`}
-            aria-hidden={i === index ? undefined : true}
+      <button className="fc-pause" onClick={() => setPaused((value) => !value)}>
+        {paused ? "Retomar passagem automática" : "Pausar passagem automática"}
+      </button>
+      <CarouselContent className="fc-track" aria-live="off">
+        {CARDS.map((card, index) => (
+          <CarouselItem
+            className="fc-card"
+            key={card.src}
+            aria-label={`${index + 1} de ${CARDS.length}`}
           >
-            <img src={card.src} alt={i === index ? card.alt : ""} loading="lazy" />
-          </figure>
+            <img
+              src={card.src}
+              alt={card.alt}
+              width="1122"
+              height="1402"
+              loading="lazy"
+              draggable={false}
+            />
+          </CarouselItem>
         ))}
-      </div>
-    </div>
+      </CarouselContent>
+      <CarouselPrevious className="fc-arrow fc-prev" aria-label="Card anterior" />
+      <CarouselNext className="fc-arrow fc-next" aria-label="Próximo card" />
+    </Carousel>
   );
 }
