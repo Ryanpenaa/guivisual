@@ -238,16 +238,19 @@ function Index() {
             <div>
               <p className="eyebrow">PARA IR UM POUCO ALÉM</p>
               <h2>
-                Plano Completo. <em>Três bônus.</em>
+                Receba <em>3 bônus de brinde</em>
                 <br />
-                Mais caminhos para aprender.
+                no Plano Completo.
               </h2>
             </div>
             <div className="bonus-value">
               <Gift size={22} />
               <span>
-                Três materiais educativos<strong>Plano Completo</strong>
-                <small>Incluídos no plano de R$ 28,90</small>
+                <span>
+                  Total dos bônus: <s>R$ 51,40</s>
+                </span>
+                <strong>Hoje grátis</strong>
+                <small>Na compra do Plano Completo</small>
               </span>
             </div>
           </div>
@@ -258,9 +261,12 @@ function Index() {
                 <div>
                   <h3>{title}</h3>
                   <p>{text}</p>
+                  <p>
+                    <strong>{["R$ 20,00", "R$ 12,50", "R$ 18,90"][i]}</strong>
+                  </p>
                 </div>
                 <span className="included">
-                  NO COMPLETO <Check size={14} />
+                  DE BRINDE <Check size={14} />
                 </span>
               </article>
             ))}
