@@ -1,4 +1,11 @@
 import { ArrowRight, Check, LockKeyhole, ShieldCheck } from "lucide-react";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 export const PLAN_BONUSES = [
   [
@@ -16,7 +23,11 @@ export const PLAN_BONUSES = [
 ];
 
 // Populate only with the seller's verified checkout destinations.
-const CHECKOUT_URLS = { basic: "", complete: "" };
+const CHECKOUT_URLS = {
+  basic: "https://checkout.kitpro.store/VCCL1O8SD8XS",
+  complete: "https://checkout.kitpro.store/VCCL1O8SD8XT",
+  upgrade: "https://checkout.kitpro.store/VCCL1O8SD8XU",
+};
 
 const PLANS = [
   {
@@ -96,19 +107,65 @@ export function PlansOffer() {
                 ))}
               </ul>
               <div className="plan-action">
-                {CHECKOUT_URLS[plan.id] ? (
-                  <a className="cta offer-button" href={CHECKOUT_URLS[plan.id]}>
-                    Quero o Plano {plan.id === "basic" ? "Básico" : "Completo"}
-                    <ArrowRight size={18} />
-                  </a>
+                {plan.id === "basic" ? (
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="cta offer-button">
+                        Quero o Plano Básico <ArrowRight size={18} />
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="upgrade-dialog">
+                      <p className="eyebrow">UMA OPORTUNIDADE PARA VOCÊ</p>
+                      <DialogTitle className="upgrade-title">
+                        Leve o kit completo por R$ 19,90
+                      </DialogTitle>
+                      <DialogDescription className="upgrade-description">
+                        Por R$ 10,00 a mais que o Básico, você recebe todos os conteúdos abaixo e os
+                        três bônus educativos.
+                      </DialogDescription>
+                      <div className="upgrade-comparison">
+                        <div>
+                          <h3>Seu conteúdo do Básico</h3>
+                          <ul>
+                            {plan.features.map((feature) => (
+                              <li key={feature}>
+                                <Check aria-hidden="true" />
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="upgrade-bonuses">
+                          <h3>Mais 3 bônus no Completo</h3>
+                          <ul>
+                            {PLAN_BONUSES.map(([title], index) => (
+                              <li key={title}>
+                                <Check aria-hidden="true" />
+                                <span>
+                                  Bônus {index + 1} — {title}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                      <p className="upgrade-price">
+                        <span>De R$ 28,90 por</span> <strong>R$ 19,90</strong>
+                        <small>Valor total do kit completo</small>
+                      </p>
+                      <a className="cta offer-button" href={CHECKOUT_URLS.upgrade}>
+                        Quero o Completo por R$ 19,90 <ArrowRight size={18} />
+                      </a>
+                      <a className="upgrade-basic" href={CHECKOUT_URLS.basic}>
+                        Continuar com o Básico por R$ 9,90
+                      </a>
+                    </DialogContent>
+                  </Dialog>
                 ) : (
-                  <>
-                    <button className="cta offer-button" disabled>
-                      Plano {plan.id === "basic" ? "Básico" : "Completo"} — em breve
-                    </button>
-                    <p className="checkout-note">Compra disponível em breve.</p>
-                  </>
-                )}
+                  <a className="cta offer-button" href={CHECKOUT_URLS.complete}>
+                    Quero o Plano Completo <ArrowRight size={18} />
+                  </a>
+                )}{" "}
               </div>
               <div className="offer-trust">
                 <span>

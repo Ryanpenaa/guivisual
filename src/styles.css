@@ -1589,3 +1589,98 @@ main .faq-answer {
     right: 3px;
   }
 }
+
+.upgrade-dialog {
+  width: calc(100% - 32px);
+  max-width: 740px;
+  max-height: 90dvh;
+  overflow-y: auto;
+  background: #faf9f4;
+  color: #153f32;
+  text-align: center;
+  border-radius: 14px;
+  padding: 32px 24px 24px;
+  gap: 16px;
+}
+.upgrade-dialog .upgrade-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(25px, 4vw, 34px);
+  line-height: 1.2;
+}
+.upgrade-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #566456;
+}
+.upgrade-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  text-align: left;
+}
+.upgrade-comparison > div {
+  background: #efefe4;
+  border-radius: 8px;
+  padding: 18px;
+}
+.upgrade-comparison .upgrade-bonuses {
+  background: #eee5cb;
+}
+.upgrade-comparison h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.upgrade-comparison ul {
+  display: grid;
+  gap: 10px;
+}
+.upgrade-comparison li {
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.upgrade-comparison li svg {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+}
+.upgrade-price {
+  display: grid;
+  gap: 4px;
+}
+.upgrade-price > span {
+  font-size: 14px;
+}
+.upgrade-price strong {
+  font-size: 38px;
+  line-height: 1.1;
+}
+.upgrade-price small {
+  font-size: 12px;
+}
+.upgrade-dialog .offer-button {
+  width: 100%;
+  white-space: normal;
+  text-align: center;
+}
+.upgrade-basic {
+  text-decoration: underline;
+  font-size: 14px;
+  padding: 12px 4px;
+  border-radius: 4px;
+}
+.upgrade-basic:focus-visible {
+  outline: 2px solid #153f32;
+  outline-offset: 2px;
+}
+@media (max-width: 550px) {
+  .upgrade-comparison {
+    grid-template-columns: 1fr;
+  }
+  .upgrade-dialog {
+    padding: 32px 18px 18px;
+  }
+}
