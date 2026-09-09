@@ -37,7 +37,7 @@ const PLANS = [
     id: "complete" as const,
     label: "PLANO COMPLETO",
     title: "Significado dos Orixás — Completo",
-    price: "19",
+    price: "28",
     description: "Todo o Plano Básico, mais três materiais para ampliar seus estudos.",
     features: [
       "Cards explicativos dos Orixás",

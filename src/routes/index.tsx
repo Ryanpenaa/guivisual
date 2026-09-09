@@ -247,7 +247,7 @@ function Index() {
               <Gift size={22} />
               <span>
                 Três materiais educativos<strong>Plano Completo</strong>
-                <small>Incluídos no plano de R$ 19,90</small>
+                <small>Incluídos no plano de R$ 28,90</small>
               </span>
             </div>
           </div>
