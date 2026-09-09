@@ -42,12 +42,14 @@ export function SocialProofToast() {
   const showNext = useCallback(() => {
     setIndex((prev) => {
       const next = (prev + 1) % NOTIFICATIONS.length;
-      setCurrent(NOTIFICATIONS[next] ?? NOTIFICATIONS[0]);
+      const item = NOTIFICATIONS[next] ?? NOTIFICATIONS[0];
+      setCurrent(item!);
       return next;
     });
     setVisible(true);
     window.setTimeout(() => setVisible(false), VISIBLE_MS);
   }, []);
+
 
 
   useEffect(() => {
