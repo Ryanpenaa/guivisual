@@ -43,19 +43,6 @@ function Index() {
       <div className="announcement">
         Um primeiro passo para conhecer. Um novo olhar para compreender.
       </div>
-      <header className="site-header">
-        <div className="container nav">
-          <Brand />
-          <nav aria-label="Navegação principal">
-            <a href="#conteudo">O guia</a>
-            <a href="#bonus">Bônus</a>
-            <a href="#duvidas">Dúvidas</a>
-          </nav>
-          <a className="nav-cta" href="#oferta">
-            Quero meu guia <ArrowRight size={16} />
-          </a>
-        </div>
-      </header>
       <main id="inicio">
         <section className="hero container" aria-labelledby="hero-title">
           <div className="hero-copy">
