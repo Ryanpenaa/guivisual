@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/accordion";
 import { FlashcardCarousel } from "@/components/flashcard-carousel";
 import { PlansOffer, PLAN_BONUSES } from "@/components/plans-offer";
+import mainMockup from "@/assets/significado-dos-orixas-mockup.png.asset.json";
 export const Route = createFileRoute("/")({ component: Index });
 function Brand() {
   return (
@@ -55,10 +56,10 @@ function Index() {
             <figure className="hero-visual">
               <div className="mockup-panel">
                 <img
-                  src="/guia-mockup.png"
-                  width="1254"
-                  height="1254"
-                  alt="Guia Significado dos Orixás apresentado em livro, celular e tablet, com mapas visuais de Oxalá, Iemanjá, Ogum e Xangô"
+                  src={mainMockup.url}
+                  width="768"
+                  height="768"
+                  alt="Guia Significado dos Orixás apresentado em livro, celular e tablet, acompanhado de páginas ilustradas"
                   fetchPriority="high"
                 />
               </div>
