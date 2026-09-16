@@ -19,6 +19,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import { IntroCardCarousel } from "@/components/intro-card-carousel";
 import { FlashcardCarousel } from "@/components/flashcard-carousel";
 import { PlansOffer, PLAN_BONUSES } from "@/components/plans-offer";
 import mainMockup from "@/assets/significado-dos-orixas-mockup.png.asset.json";
@@ -114,14 +115,6 @@ function Index() {
           </div>
           <div className="prose">
             <p>
-              Talvez você já tenha ouvido falar em Oxalá, Iemanjá, Ogum, Xangô, Oxum e outros
-              Orixás, mas ainda não compreenda o que cada um representa.
-            </p>
-            <p>
-              Ou encontre informações espalhadas, contraditórias e difíceis de entender. Você não
-              precisa começar por livros extensos ou depender de vídeos aleatórios.
-            </p>
-            <p>
               <strong>
                 O Guia Visual dos Orixás foi organizado para facilitar o aprendizado de quem está
                 começando.
@@ -129,6 +122,7 @@ function Index() {
               Leia pelo celular, revise rapidamente ou imprima para estudar quando quiser.
             </p>
           </div>
+          <div style={{ gridColumn: "1 / -1", minWidth: 0, width: "100%" }}><IntroCardCarousel /></div>
         </section>
         <section className="section contents-section">
           <div className="container">
