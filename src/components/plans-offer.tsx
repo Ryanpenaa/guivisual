@@ -24,9 +24,9 @@ export const PLAN_BONUSES = [
 
 // Populate only with the seller's verified checkout destinations.
 const CHECKOUT_URLS = {
-  basic: "https://checkout.kitpro.store/VCCL1O8SD8XS",
-  complete: "https://checkout.kitpro.store/VCCL1O8SD8XT",
-  upgrade: "https://checkout.kitpro.store/VCCL1O8SD8XU",
+  basic: "https://checkout.kitmakers.online/VCCL1O8SD98I",
+  complete: "https://checkout.kitmakers.online/VCCL1O8SD98K",
+  upgrade: "https://checkout.kitmakers.online/VCCL1O8SD98J",
 };
 
 const PLANS = [

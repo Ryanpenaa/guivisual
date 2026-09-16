@@ -1802,3 +1802,8 @@ main .faq-answer {
     padding: 24px 16px;
   }
 }
+
+.deferred-carousel { --preview-gap: 20px; width: min(100%, 1000px); margin-inline: auto; }
+.carousel-placeholder { width: calc((100% - 2 * var(--preview-gap)) / 2.4); aspect-ratio: 1122 / 1402; }
+.portrait > .carousel-placeholder { aspect-ratio: 2 / 3; }
+@media (max-width:720px) { .deferred-carousel { --preview-gap: 10px; } }

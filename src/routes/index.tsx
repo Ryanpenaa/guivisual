@@ -19,10 +19,12 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
-import { IntroCardCarousel } from "@/components/intro-card-carousel";
-import { FlashcardCarousel } from "@/components/flashcard-carousel";
+import { lazy } from "react";
+import { DeferredCarousel } from "@/components/deferred-carousel";
+const IntroCardCarousel = lazy(() => import("@/components/intro-card-carousel").then(m => ({ default: m.IntroCardCarousel })));
+const FlashcardCarousel = lazy(() => import("@/components/flashcard-carousel").then(m => ({ default: m.FlashcardCarousel })));
 import { PlansOffer, PLAN_BONUSES } from "@/components/plans-offer";
-import mainMockup from "@/assets/significado-dos-orixas-mockup.png.asset.json";
+
 export const Route = createFileRoute("/")({ component: Index });
 function Brand() {
   return (
@@ -57,9 +59,12 @@ function Index() {
             <figure className="hero-visual">
               <div className="mockup-panel">
                 <img
-                  src={mainMockup.url}
-                  width="768"
-                  height="768"
+                  src="/optimized/hero-1254.webp"
+                  srcSet="/optimized/hero-480.webp 480w, /optimized/hero-768.webp 768w, /optimized/hero-1254.webp 1254w"
+                  sizes="(max-width: 700px) calc(100vw - 40px), 768px"
+                  decoding="async"
+                  width="1254"
+                  height="1254"
                   alt="Guia Significado dos Orixás apresentado em livro, celular e tablet, acompanhado de páginas ilustradas"
                   fetchPriority="high"
                 />
@@ -122,7 +127,7 @@ function Index() {
               Leia pelo celular, revise rapidamente ou imprima para estudar quando quiser.
             </p>
           </div>
-          <div style={{ gridColumn: "1 / -1", minWidth: 0, width: "100%" }}><IntroCardCarousel /></div>
+          <div style={{ gridColumn: "1 / -1", minWidth: 0, width: "100%" }}><DeferredCarousel portrait><IntroCardCarousel /></DeferredCarousel></div>
         </section>
         <section className="section contents-section">
           <div className="container">
@@ -141,7 +146,7 @@ function Index() {
               </p>
             </div>
           </div>
-          <FlashcardCarousel />
+          <DeferredCarousel><FlashcardCarousel /></DeferredCarousel>
         </section>
         <section className="section container method-summary" aria-label="Sobre o material">
           <p>
