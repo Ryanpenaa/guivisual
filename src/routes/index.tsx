@@ -59,8 +59,8 @@ function Index() {
             <figure className="hero-visual">
               <div className="mockup-panel">
                 <img
-                  src="/optimized/hero-1254.webp"
-                  srcSet="/optimized/hero-480.webp 480w, /optimized/hero-768.webp 768w, /optimized/hero-1254.webp 1254w"
+                  src="/mk.webp"
+                  srcSet="/mk.webp 480w, /mk.webp 768w, /mk.webp 1254w"
                   sizes="(max-width: 700px) calc(100vw - 40px), 768px"
                   decoding="async"
                   width="1254"

@@ -7,6 +7,17 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 
+function trackInitiateCheckout(plan: "basic" | "complete" | "upgrade") {
+  const pixel = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
+  pixel?.("track", "InitiateCheckout", {
+    content_name: plan === "basic" ? "Plano Básico" : "Plano Completo",
+    content_category: "Guia Visual dos Orixás",
+    content_ids: [plan],
+    value: plan === "basic" ? 9.9 : plan === "upgrade" ? 19.9 : 28.9,
+    currency: "BRL",
+  });
+}
+
 export const PLAN_BONUSES = [
   [
     "Conhecendo a Umbanda Dentro do Terreiro",
@@ -110,7 +121,7 @@ export function PlansOffer() {
                 {plan.id === "basic" ? (
                   <Dialog>
                     <DialogTrigger asChild>
-                      <button className="cta offer-button">
+                      <button className="cta offer-button" onClick={() => trackInitiateCheckout("basic")}>
                         Quero o Plano Básico <ArrowRight size={18} />
                       </button>
                     </DialogTrigger>
@@ -153,16 +164,16 @@ export function PlansOffer() {
                         <span>De R$ 28,90 por</span> <strong>R$ 19,90</strong>
                         <small>Valor total do kit completo</small>
                       </p>
-                      <a className="cta offer-button" href={CHECKOUT_URLS.upgrade}>
+                      <a className="cta offer-button" href={CHECKOUT_URLS.upgrade} onClick={() => trackInitiateCheckout("upgrade")}>
                         Quero o Completo por R$ 19,90 <ArrowRight size={18} />
                       </a>
-                      <a className="upgrade-basic" href={CHECKOUT_URLS.basic}>
+                      <a className="upgrade-basic" href={CHECKOUT_URLS.basic} onClick={() => trackInitiateCheckout("basic")}>
                         Continuar com o Básico por R$ 9,90
                       </a>
                     </DialogContent>
                   </Dialog>
                 ) : (
-                  <a className="cta offer-button" href={CHECKOUT_URLS.complete}>
+                  <a className="cta offer-button" href={CHECKOUT_URLS.complete} onClick={() => trackInitiateCheckout("complete")}>
                     Quero o Plano Completo <ArrowRight size={18} />
                   </a>
                 )}{" "}
